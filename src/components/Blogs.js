@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import Spinner from './Spinner';
-import Card from './Card';
 import AppContext from '../context/AppContext';
 
 const Blogs = () => {
@@ -22,7 +21,9 @@ const Blogs = () => {
             <p>No Post Found</p>
           </div>) :
 
-          (posts.map( (post) => (Card) ))
+          (posts.map( (post) => (
+            <p>{post.title}</p>
+          ) ))
         )
       }
     </div>
