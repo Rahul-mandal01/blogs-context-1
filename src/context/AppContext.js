@@ -4,9 +4,9 @@ import { useState } from "react";
 
 
 // -------Step1-------------
-const AppContext = createContext();
+export const AppContext = createContext();
 
-export function AppContextProvider({children}){
+export default function AppContextProvider({children}){
     const [loading, setLoading] = useState(false);
     const [posts, setPosts] = useState("");
     const [page, setPage] = useState(1);
@@ -14,10 +14,10 @@ export function AppContextProvider({children}){
 
     // Data Filling Pending
 
-    async function fetchBlogPosts(page=1){
+    async function fetchBlogPosts(page){
 
         setLoading(true);
-        let url = `${baseUrl}?pages=${page}`;
+        let url = `${baseUrl}?page=${page}`;
         try{
 
             const result = await fetch(url);
@@ -66,5 +66,3 @@ export function AppContextProvider({children}){
     </AppContext.Provider>
 
 }
-
-export default AppContext;
